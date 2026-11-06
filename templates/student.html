@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySpace Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="student-page">
+
+    <a href="/simulator" class="simulation-link">
+        ⚙ Simulation Effects
+    </a>
+
+    <main class="student-container">
+
+        <header class="page-header">
+            <h1>StudySpace Assistant</h1>
+            <p>Find the right study space for your needs.</p>
+        </header>
+
+        <section class="request-card">
+
+            <h2>What are you looking for?</h2>
+            <p>Select an activity or describe what you need.</p>
+
+            <div class="activity-grid" id="activity-options">
+
+                <button type="button" class="activity-button" data-intent="reading">
+                    <span class="activity-icon">📚</span>
+                    <span>Study / Read</span>
+                </button>
+
+                <button type="button" class="activity-button" data-intent="charging">
+                    <span class="activity-icon">🔋</span>
+                    <span>Charge Device</span>
+                </button>
+
+                <button type="button" class="activity-button" data-intent="computer">
+                    <span class="activity-icon">💻</span>
+                    <span>Use Computer</span>
+                </button>
+
+                <button type="button" class="activity-button" data-intent="discussion">
+                    <span class="activity-icon">👥</span>
+                    <span>Group Study</span>
+                </button>
+
+                <button type="button" class="activity-button" data-intent="printing">
+                    <span class="activity-icon">🖨️</span>
+                    <span>Print Documents</span>
+                </button>
+
+            </div>
+
+            <div class="optional-input">
+                <label for="student-message">
+                    Or describe what you need <span>(Optional)</span>
+                </label>
+
+                <textarea
+                    id="student-message"
+                    placeholder="Example: I need somewhere quiet to work on my assignment..."
+                ></textarea>
+            </div>
+
+            <div id="group-size-container" class="group-size-container hidden">
+                <label for="group-size">Number of people</label>
+                <input
+                    type="number"
+                    id="group-size"
+                    min="1"
+                    max="20"
+                    value="2"
+                >
+            </div>
+
+            <div class="campus-selection">
+                <label>Preferred Library</label>
+
+                <div class="campus-buttons" id="campus-options">
+                    <button type="button" class="campus-button selected" data-campus="both">
+                        Any Library
+                    </button>
+
+                    <button type="button" class="campus-button" data-campus="arlegui">
+                        Arlegui
+                    </button>
+
+                    <button type="button" class="campus-button" data-campus="casal">
+                        Casal
+                    </button>
+                </div>
+            </div>
+
+            <button type="button" id="recommend-button" class="recommend-button">
+                Find a Study Space
+            </button>
+
+        </section>
+
+        <section id="result-card" class="result-card hidden" aria-live="polite">
+            <h2>Agent Recommendation</h2>
+            <div id="result-content"></div>
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/student.js') }}"></script>
+
+</body>
+</html>
